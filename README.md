@@ -47,7 +47,7 @@
 
 ### func.go
 
-### const.go(常量配置)
+### const.go(const settings)
 
 ## Server
 
@@ -90,4 +90,3 @@
 
 ### const.go(const-settings)
 
-*XMind - Trial Version*
