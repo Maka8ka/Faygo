@@ -4,12 +4,7 @@ import (
 	"runtime"
 )
 
-type Commander interface {
-	Exec(args ...string) (int, string, error)
-	ExecAsync(stdout chan string, args ...string) int
-	ExecIgnoreResult(args ...string) error
-}
-
+// Command的初始化函数
 func NewCommand() Commander {
 	var cmd Commander
 

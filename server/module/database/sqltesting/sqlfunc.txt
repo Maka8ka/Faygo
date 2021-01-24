@@ -1,0 +1,85 @@
+
+
+
+
+table_name client
+id cname lan wan os mac latest_time status task result filehex filelo notes
+
+
+CREATE DATABASE IF NOT EXISTS faygo DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+USE faygo;
+CREATE TABLE IF NOT EXISTS `faygo`.`client`(
+   `id` INT NOT NULL AUTO_INCREMENT COMMENT 'client_id',
+   `cname` VARCHAR(255) COMMENT 'client_cname',
+   `lan` VARCHAR(255) COMMENT 'lan_ip',
+   `wan` VARCHAR(255) COMMENT 'wan_ip',
+   `os` VARCHAR(255) COMMENT 'os_type',
+   `mac` VARCHAR(255) COMMENT 'client_mac',
+   `latest_time` VARCHAR(255) COMMENT 'latest_time',
+   `status` INT COMMENT 'client_status',
+   `task` VARCHAR(2000) COMMENT 'client_task',
+   `result` TEXT(50000) COMMENT 'task_result',
+   `filehex` LONGTEXT COMMENT 'file_hex',
+   `filelo` VARCHAR(255) COMMENT 'file_location',
+   `notes` VARCHAR(5000) COMMENT 'client_notes',
+   PRIMARY KEY ( `id` )
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*client_status
+0:初始化
+1:正常，查询无任务后，进入sleep进程
+2:快速交互模式
+3:进入休眠
+4:卸载
+*/
+
+--1. get mac
+-- post data {"client_mac":"testmac"}
+select client_id,client_status from client where client_mac ='testmac'; --return {"client_id":"101","client_status","1"}
+
+--if empty
+--服务http处理空
+INSERT INTO client (client_mac,client_status) VALUES ('testmac', 0 );
+select client_id,client_status from client where client_mac ='testmac';
+--服务端返回状态码{"client_id":"101","client_status":"0"}
+
+--2. new client
+/*客户端初始化
+获取初始化信息,提交
+
+post data
+{"client_mac":"testmac","os_type":"user",lan_ip":"10.0.0.1","client_status","0"}
+*/
+
+/*服务http处理初始化条目
+处理os_type,转换为windows/linux/drwin
+获取连接的ip转换为wan_ip
+获取时间转换为latest_time
+*/
+
+UPDATE client SET os_type='linux', wan_ip='7.6.6.7',lan_ip='10.0.0.1' ,latest_time='2021-01-13 15:48:02' ，client_status=1 where client_mac = 'testmac';
+

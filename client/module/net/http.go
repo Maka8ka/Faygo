@@ -1,20 +1,37 @@
 package net
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
 )
 
 func HttpGet(url string) string {
-	resp, _ := http.Get(url)
-	defer resp.Body.Close()
-	response, _ := ioutil.ReadAll(resp.Body)
-	return string(response)
+	resp, err := http.Get(url)
+	if err != nil {
+		fmt.Println(err)
+		return string("error")
+	} else {
+		defer resp.Body.Close()
+		// 判断返回字符串
+		// response, _ := ioutil.ReadAll(resp.Body)
+		// return string(response)
+		status := resp.Status
+		// fmt.Println(status)
+		return string(status)
+	}
+
 }
 
 func HttpPost(url string, body string) string {
-	resp, _ := http.Post(url, "text/html", strings.NewReader(body))
-	response, _ := ioutil.ReadAll(resp.Body)
-	return string(response)
+	resp, err := http.Post(url, "text/html", strings.NewReader(body))
+	if err != nil {
+		fmt.Println(err)
+		return string("error")
+	} else {
+		defer resp.Body.Close()
+		response, _ := ioutil.ReadAll(resp.Body)
+		return string(response)
+	}
 }
