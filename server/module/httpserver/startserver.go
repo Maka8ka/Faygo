@@ -30,13 +30,13 @@ func PostJson(c *gin.Context) {
 	}
 }
 
-// 以下为默认路由
+
 func HttpDefault(c *gin.Context) {
-	// c.String(http.StatusOK, "{\"0\":\"0\"}")
-	c.Redirect(302, "https://www.google.com")
+	
+	c.Redirect(302, "https:
 }
 
-// 以下为POST 获取body
+
 func HttpPost(c *gin.Context) {
 	data, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
@@ -49,7 +49,7 @@ func HttpPost(c *gin.Context) {
 	}
 }
 
-// 以下登陆测试
+
 
 type LoginForm struct {
 	User     string `json:"user" binding:"required"`
@@ -59,8 +59,8 @@ type LoginForm struct {
 func LoginParms(c *gin.Context) {
 	form := &LoginForm{}
 
-	// message := c.BindJSON("message")
-	// nick := c.PostForm("nick")
+	
+	
 	if c.BindJSON(&form) == nil {
 		fmt.Println(form.User, form.Password)
 		if form.User == "user" && form.Password == "password" {

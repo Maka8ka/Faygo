@@ -9,16 +9,9 @@ import (
 )
 
 const (
-	ivaes = "Kasy65xGUhjbzg5f" 
-	
+	ivaes  = "Kasy65xGUhjbzg5f" 
+	aeskey = "qqqqqqqqqqqqqqqq" 
 )
-
-/*
-eencrypt
-	Note: the key length is 16 bytes
-*/
-
-
 
 func PKCS5Padding(plainText []byte, blockSize int) []byte {
 	padding := blockSize - (len(plainText) % blockSize)
@@ -70,7 +63,7 @@ func AesCbcEncrypt(plainText, key []byte, ivAes ...byte) ([]byte, error) {
 
 func AesCbcDecrypt(cipherText, key []byte, ivAes ...byte) ([]byte, error) {
 	if len(key) != 16 && len(key) != 24 && len(key) != 32 {
-		return nil, nil 
+		return nil, nil
 	}
 	block, err := aes.NewCipher(key)
 	if err != nil {
@@ -81,7 +74,7 @@ func AesCbcDecrypt(cipherText, key []byte, ivAes ...byte) ([]byte, error) {
 		if err := recover(); err != nil {
 			switch err.(type) {
 			case runtime.Error:
-				log.Println("runtime err:", err, "Check that the key or text is correct")
+				log.Println("runtime err:", err, "Key error")
 			default:
 				log.Println("error:", err)
 			}
@@ -90,7 +83,7 @@ func AesCbcDecrypt(cipherText, key []byte, ivAes ...byte) ([]byte, error) {
 	var iv []byte
 	if len(ivAes) != 0 {
 		if len(ivAes) != 16 {
-			return nil, nil 
+			return nil, nil
 		} else {
 			iv = ivAes
 		}

@@ -42,7 +42,7 @@ func GetIPs() (ips []string) {
 	return ips
 }
 
-// func main() {
-// 	fmt.Printf("mac addrs: %q\n", GetMacAddrs())
-// 	fmt.Printf("ips: %q\n", GetIPs())
-// }
+
+
+
+

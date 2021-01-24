@@ -14,11 +14,11 @@ func HttpGet(url string) string {
 		return string("error")
 	} else {
 		defer resp.Body.Close()
-		// 判断返回字符串
-		// response, _ := ioutil.ReadAll(resp.Body)
-		// return string(response)
+		
+		
+		
 		status := resp.Status
-		// fmt.Println(status)
+		
 		return string(status)
 	}
 

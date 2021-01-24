@@ -8,7 +8,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-//数据库连接信息
+
 const (
 	USERNAME = "root"
 	PASSWORD = "1qaz!QAZ"
@@ -26,16 +26,16 @@ func main() {
 		return
 	}
 
-	DB.SetConnMaxLifetime(100 * time.Second) //最大连接周期，超时的连接就close
-	DB.SetMaxOpenConns(100)                  //设置最大连接数
-	//CreateTable(DB)
+	DB.SetConnMaxLifetime(100 * time.Second) 
+	DB.SetMaxOpenConns(100)                  
+	
 
 	sqlstring := "INSERT INTO client (client_mac,client_status) VALUES ('testmac3',0)"
 	CreateTable(DB, sqlstring)
 
 }
 
-// CreateTable 向表中插入数据 通用方法 插入方法
+
 func CreateTable(DB *sql.DB, sqlstring string) {
 	sql := sqlstring
 

@@ -16,7 +16,7 @@ func testinginit() {
 }
 
 func testupdate() {
-	t1 := Task{Mac: "aaa", Status: 9, Result: "ok" /*, LatestTime: GetTime()*/}
+	t1 := Task{Mac: "aaa", Status: 9, Result: "ok" }
 	t1.UpdataTask()
 	fmt.Println(t1)
 
