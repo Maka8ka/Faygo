@@ -9,7 +9,7 @@
 * Windows
 
 
-[![Watch the video](https://raw.githubusercontent.com/Maka8ka/Faygo/main/faygo.gif)](https://github.com/Maka8ka/Faygo/blob/main/faygo.mp4)
+[![Watch the video](https://raw.githubusercontent.com/Maka8ka/Faygo/main/faygo.gif)](https://github.com/Maka8ka/Faygo/blob/main/faygo.gif)
 
 ## Client
 
