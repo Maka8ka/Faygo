@@ -1,5 +1,13 @@
 # Faygo
 
+* A RAT Tools on major platforms.High scalability
+* The traffic data be encryped by aes.use aeskey and aesiv
+* The net moudle now use http,it can be replace to other protocol.
+## Now support
+* Linux
+* Drwin
+* Windows has some bugs
+
 ## Client
 
 ### module
