@@ -6,7 +6,7 @@
 ## Now support
 * Linux
 * Drwin
-* Windows has some bugs
+* Windows
 
 
 [![Watch the video]()](https://github.com/Maka8ka/Faygo/blob/main/faygo.mp4)
