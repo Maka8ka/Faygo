@@ -9,7 +9,7 @@
 * Windows has some bugs
 
 
-[![Watch the video]](https://github.com/Maka8ka/Faygo/blob/main/faygo.mp4)
+[![Watch the video](https://gifs.com/gif/xnYkAE)](https://github.com/Maka8ka/Faygo/blob/main/faygo.mp4)
 
 ## Client
 
