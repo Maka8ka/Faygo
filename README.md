@@ -8,6 +8,14 @@
 * Drwin
 * Windows has some bugs
 
+<iframe 
+    width="800" 
+    height="450" 
+    src="https://github.com/Maka8ka/Faygo/blob/main/faygo.mp4"
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
 ## Client
 
 ### module
