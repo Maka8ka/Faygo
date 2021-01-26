@@ -8,8 +8,11 @@
 * Drwin
 * Windows
 
+## Example
 click the gif for full expample video
 [![Watch the video](https://raw.githubusercontent.com/Maka8ka/Faygo/main/faygo.gif)](https://github.com/Maka8ka/Faygo/blob/main/faygo.m4v)
+## Detection
+[![Watch the video](https://raw.githubusercontent.com/Maka8ka/Faygo/main/detection.jpg)]
 
 ## Client
 
