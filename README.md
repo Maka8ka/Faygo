@@ -8,6 +8,8 @@
 * Drwin
 * Windows
 
+Now can run command and transfer files.
+
 ## Example
 click the gif for full expample video
 [![Watch the video](https://raw.githubusercontent.com/Maka8ka/Faygo/main/faygo.gif)](https://github.com/Maka8ka/Faygo/blob/main/faygo.m4v)
