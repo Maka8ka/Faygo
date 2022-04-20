@@ -1,23 +1,15 @@
-package httpserver
-
-import (
+package httpserverimport (
 	"fmt"
 	"io/ioutil"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-)
-
-func StartHttpServer() {
+	"net/http"	"github.com/gin-gonic/gin"
+)func StartHttpServer() {
 	router := gin.Default()
 	router.POST("/post", PostJson)
 	router.POST("/login", LoginParms)
 	router.GET("/", HttpDefault)
 	router.POST("/", HttpPost)
 	router.Run(":5000")
-}
-
-func PostJson(c *gin.Context) {
+}func PostJson(c *gin.Context) {
 	data, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
@@ -29,14 +21,10 @@ func PostJson(c *gin.Context) {
 		})
 	}
 }
-
-
 func HttpDefault(c *gin.Context) {
 	
 	c.Redirect(302, "https:
 }
-
-
 func HttpPost(c *gin.Context) {
 	data, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
@@ -47,19 +35,11 @@ func HttpPost(c *gin.Context) {
 		c.String(http.StatusOK, string(data))
 		fmt.Println(string(data))
 	}
-}
-
-
-
-type LoginForm struct {
+}type LoginForm struct {
 	User     string `json:"user" binding:"required"`
 	Password string `json:"password" binding:"required"`
-}
-
-func LoginParms(c *gin.Context) {
-	form := &LoginForm{}
-
-	
+}func LoginParms(c *gin.Context) {
+	form := &LoginForm{}	
 	
 	if c.BindJSON(&form) == nil {
 		fmt.Println(form.User, form.Password)

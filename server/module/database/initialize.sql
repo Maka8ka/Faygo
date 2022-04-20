@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `faygo`.`client`(
    `sleep` INT DEFAULT 10 COMMENT 'sleep_time',
    `task` VARCHAR(2000) COMMENT 'client_task',
    `result` TEXT(50000) COMMENT 'task_result',
-   `filehex` LONGTEXT COMMENT 'file_hex',
+   `filehex` LONGBLOB COMMENT 'file_hex',
    `filelo` VARCHAR(255) COMMENT 'file_location',
    `notes` VARCHAR(5000) COMMENT 'client_notes',
    PRIMARY KEY ( `id` )

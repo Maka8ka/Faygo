@@ -1,34 +1,29 @@
-package net
-
-import (
+package netimport (
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
-)
-
-func HttpGet(url string) string {
+	"time"
+)func HttpGet(url string) string {
 	resp, err := http.Get(url)
 	if err != nil {
-		fmt.Println(err)
-		return string("error")
+		
+		s := strings.Split(fmt.Sprintln(err), " ")
+		
+		return s[len(s)-1] 
 	} else {
 		defer resp.Body.Close()
 		
 		
 		
-		status := resp.Status
 		
-		return string(status)
-	}
-
-}
-
-func HttpPost(url string, body string) string {
+		return string(resp.Status)
+	}}func HttpPost(url string, body string) string {
 	resp, err := http.Post(url, "text/html", strings.NewReader(body))
 	if err != nil {
 		fmt.Println(err)
-		return string("error")
+		time.Sleep(time.Duration(30) * time.Second) 
+		return "error2"
 	} else {
 		defer resp.Body.Close()
 		response, _ := ioutil.ReadAll(resp.Body)
